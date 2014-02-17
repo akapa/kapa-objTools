@@ -1,0 +1,21 @@
+{
+  "name": "kapa/objTools",
+  "version": "0.0.0",
+  "description": "Object tools for Javascript",
+  "main": "objTools.js",
+  "keywords": [
+    "object",
+    "constructor"
+  ],
+  "authors": [
+    "Kapa"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
