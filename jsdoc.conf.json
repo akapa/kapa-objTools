@@ -1,0 +1,17 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": ["./objTools.js"],
+        "includePattern": ".+\\.js(doc)?$"
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": false
+    },
+    "opts": {
+        "destination": "./docs/"
+    }
+}
