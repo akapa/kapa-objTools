@@ -16,7 +16,10 @@ define(['underscore'], function (_) {
 		 * @returns {Object}
 		 */	
 		make: function (proto, extensions) {
-			var obj = _(proto).isFunction() ? new proto() : Object.create(proto);
+			var obj =  Object.create(_(proto).isFunction() ? proto.prototype : proto);
+			if (_(proto).isFunction()) {
+				Object.defineProperty(obj, 'constructor' { value: proto };
+			}
 			if (extensions) {
 				_(obj).extend(extensions);
 			}
@@ -28,6 +31,7 @@ define(['underscore'], function (_) {
 		 * @param {Object} obj - The object to be used as a prototype.
 		 * @param {Function} func - The "constructor" function. It will not be called, it is only used to make the object "named".
 		 * @returns {Object}
+		 * @deprecated
 		 */	
 		construct: function (obj, func) {
 			func.prototype = obj;
@@ -35,6 +39,24 @@ define(['underscore'], function (_) {
 				constructor: { value: func }
 			});
 			return obj;
+		},
+		/**
+		 * Attaches a dummy named constructor to the object.
+		 * Used to create objects that are "named" in the browser's inspector.
+		 * @param {Function} func - The "constructor" function. It is only used to make the object "named". But you can execute stuff in it, if you want, will run before init.
+		 * @param {Object} obj - The object to be used as a prototype. If it has an `init` method, it will be called after the new object is initialized.
+		 * @returns {Function}
+		 */	
+		makeConstructor: function (func, obj) {
+			func.prototype = obj;
+			var f = function () {
+				var o = new func();
+				if ('init' in o) {
+					o.init.apply(o, arguments);
+				}
+				return o;
+			};
+			return f;
 		}
 	};
 
