@@ -7,6 +7,9 @@
     "object",
     "constructor"
   ],
+  "dependencies": {
+    "underscore": "latest"
+  },
   "authors": [
     "Kapa"
   ],
