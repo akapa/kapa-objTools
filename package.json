@@ -1,0 +1,9 @@
+{
+  "name": "kapa/objTools",
+  "version": "0.0.1",
+  "description": "Object tools for Javascript",
+  "main": "objTools.js",
+  "dependencies": {
+    "underscore": "latest"
+  }
+}
